@@ -14,5 +14,5 @@ Run `code .` and press `F5` to debug in a new instance of VSCode. Make changes a
 |--------|--------|------|
 | `M-K` | OK | Move forward by one s-exp |
 | `M-J` | OK | Move backward by one s-exp |
-| `M-;` | OK | Slurp one s-exp forward |
-| `M-L` | OK | Barf one s-exp to the front |
+| `M-I` | OK | Slurp one s-exp forward |
+| `M-U` | OK | Barf one s-exp to the front |

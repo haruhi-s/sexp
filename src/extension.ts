@@ -140,7 +140,7 @@ export function activate(context: vscode.ExtensionContext) {
             let n = nextSexpEnd(s);
             anchorOffset -= n;
             let newAnchor = doc.positionAt(anchorOffset);
-            editor.selection = new vscode.Selection(newAnchor,editor.selection.active);
+            editor.selection = new vscode.Selection(newAnchor, editor.selection.active);
         });
     }
     function moveBackwardSexp() {
@@ -157,7 +157,8 @@ export function activate(context: vscode.ExtensionContext) {
         if (!editor) {
             return;
         }
-        if (editor.selection.active === editor.selection.anchor) {
+        let doc = editor.document;
+        if (doc.offsetAt(editor.selection.active) === doc.offsetAt(editor.selection.anchor)) {
             inMarkMode = false;
         }
     });
