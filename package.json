@@ -2,7 +2,7 @@
     "name": "sexp",
     "displayName": "sexp",
     "description": "sexp in vscode",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "publisher": "haruhi-s",
     "homepage": "https://github.com/haruhi-s/sexp",
 	"repository": {
