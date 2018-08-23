@@ -1,6 +1,9 @@
 # Sexp
 sexp support for vscode. Inspired by Emacs.
 
+## How to use
+Press `Alt+I` and `Alt+U` to control the anchor of the selection by s-expressions. `Alt+I` moves it forward and `Alt+U` retracts it. `Alt+J/k` controls the active cursor (the other end of the selection) in the same way, and it also works when you are not trying to select things. When navigating, use `Alt + J/K` to move between sexp's, and when trying to select, use all four to precisely control your selection. 
+
 ## Building
 Run git clone for this repo.
 Run npm install vscode under this repo.
