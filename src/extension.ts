@@ -78,6 +78,31 @@ export function activate(context: vscode.ExtensionContext) {
     function getCurrentOffset(editor: vscode.TextEditor, doc: vscode.TextDocument) {
         return doc.offsetAt(editor.selection.active);
     }
+    function reverse(s: string) {
+        return s.split('').reverse().map((s) => {
+            if (s === '(') {
+                return ')';
+            }
+            else if (s === ')') {
+                return '(';
+            }
+            else if (s === '{') {
+                return '}';
+            }
+            else if (s === '}') {
+                return '{';
+            }
+            else if (s === '[') {
+                return ']';
+            }
+            else if (s === ']') {
+                return '[';
+            }
+            else {
+                return s;
+            }
+        }).join('');
+    }
     function move(offset: number) {
         selectionChanger((editor, doc) => {
             let t = inMarkMode;
@@ -107,31 +132,20 @@ export function activate(context: vscode.ExtensionContext) {
             editor.selection = new vscode.Selection(newAnchor, editor.selection.active);
         });
     }
+    function barfSexp() {
+        selectionChanger((editor, doc) => {
+            let anchorOffset = doc.offsetAt(editor.selection.anchor);
+            let s = reverse(doc.getText().slice(0, anchorOffset));
+            console.log(s);
+            let n = nextSexpEnd(s);
+            anchorOffset -= n;
+            let newAnchor = doc.positionAt(anchorOffset);
+            editor.selection = new vscode.Selection(newAnchor,editor.selection.active);
+        });
+    }
     function moveBackwardSexp() {
         selectionChanger((editor, doc) => {
-            let s = doc.getText().slice(0, getCurrentOffset(editor, doc)).split('').reverse().map((s) => {
-                if (s === '(') {
-                    return ')';
-                }
-                else if (s === ')') {
-                    return '(';
-                }
-                else if (s === '{') {
-                    return '}';
-                }
-                else if (s === '}') {
-                    return '{';
-                }
-                else if (s === '[') {
-                    return ']';
-                }
-                else if (s === ']') {
-                    return '[';
-                }
-                else {
-                    return s;
-                }
-            }).join('');
+            let s = reverse(doc.getText().slice(0, getCurrentOffset(editor, doc)));
             let n = nextSexpEnd(s);
             move(-n);
         });
@@ -150,7 +164,7 @@ export function activate(context: vscode.ExtensionContext) {
     subs.push(vscode.commands.registerCommand('sexp.moveForward', () => moveForwardSexp()));
     subs.push(vscode.commands.registerCommand('sexp.moveBackward', () => moveBackwardSexp()));
     subs.push(vscode.commands.registerCommand('sexp.slurp', () => slurpSexp()));
-
+    subs.push(vscode.commands.registerCommand('sexp.barf', () => barfSexp()));
 
 }
 

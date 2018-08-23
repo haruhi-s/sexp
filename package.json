@@ -2,14 +2,15 @@
     "name": "sexp",
     "displayName": "sexp",
     "description": "sexp in vscode",
-    "version": "0.1.2",
+    "version": "0.1.4",
     "publisher": "haruhi-s",
     "homepage": "https://github.com/haruhi-s/sexp",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/haruhi-s/sexp.git"
-	},
-	"bugs": "https://github.com/haruhi-s/sexp/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/haruhi-s/sexp.git"
+    },
+    "bugs": "https://github.com/haruhi-s/sexp/issues",
+    "icon": "icon.png",
     "engines": {
         "vscode": "^1.26.0"
     },
@@ -29,12 +30,16 @@
         ],
         "keybindings": [
             {
+                "command": "sexp.barf",
+                "key": "alt+l"
+            },
+            {
                 "command": "sexp.slurp",
-                "key": "alt+k"
+                "key": "alt+;"
             },
             {
                 "command": "sexp.moveForward",
-                "key": "alt+l"
+                "key": "alt+k"
             },
             {
                 "command": "sexp.moveBackward",
