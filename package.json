@@ -2,7 +2,7 @@
     "name": "sexp",
     "displayName": "sexp",
     "description": "sexp in vscode",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "publisher": "haruhi-s",
     "homepage": "https://github.com/haruhi-s/sexp",
 	"repository": {
@@ -30,15 +30,15 @@
         "keybindings": [
             {
                 "command": "sexp.slurp",
-                "key": "shift+alt+k"
+                "key": "alt+k"
             },
             {
                 "command": "sexp.moveForward",
-                "key": "shift+alt+l"
+                "key": "alt+l"
             },
             {
                 "command": "sexp.moveBackward",
-                "key": "shift+alt+j"
+                "key": "alt+j"
             }
         ]
     },
